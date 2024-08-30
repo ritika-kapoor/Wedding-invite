@@ -1,130 +1,162 @@
-<!-- <h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p> -->
-
 <script>
-    import Background from '../components/Background.svelte';
-    import MainVisual from '../components/MainVisual.svelte';
-    import HostInfo from '../components/HostInfo.svelte';
-    import OurStory from '../components/OurStory.svelte';
-    import DateVenue from '../components/DateVenue.svelte';
-    import Gallery from '../components/Gallery.svelte';
-    import Helpers from '../components/Helpers.svelte';
-    import Accommodation from '../components/Accommodation.svelte';
-    import Itinerary from '../components/Itinerary.svelte';
-    import RSVP from '../components/RSVP.svelte';
-    import ThankYou from '../components/ThankYou.svelte';
+    import { onMount } from 'svelte';
     import { writable } from 'svelte/store';
 
-    const background = writable('/background1.jpg');
-    const mainImage = writable('/bride_groom.jpg');
-    const hostInfo = writable({ bride: 'Jane Doe', groom: 'John Smith' });
-    const ourStory = writable('Our love story started...');
-    const dateVenue = writable({
-        date: '10th October 2024',
-        venue: 'Sunset Beach',
-        mapLink: 'https://maps.google.com/?q=Sunset+Beach',
-        mapEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.8792721191364!2d-122.4040714846896!3d37.78583437975778!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085818c7e3a1237%3A0x92d7162f1d879b34!2sSunset%20Beach!5e0!3m2!1sen!2sus!4v1614384240923!5m2!1sen!2sus'
-    });
-    const galleryImages = writable(['/image1.jpg', '/image2.jpg', '/image3.jpg', '/image4.jpg']);
-    const helpers = writable({
-        bestMan: 'Mike',
-        bestManImage: '/bestman.jpg',
-        bridesmaid: 'Anna',
-        bridesmaidImage: '/bridesmaid.jpg'
-    });
-    const accommodation = writable('Hotel Sunrise, Room 101');
-    const itinerary = writable('3:00 PM - Ceremony, 5:00 PM - Reception');
-    const rsvp = writable([]);
-    const thankYou = writable('We look forward to having you with us!');
+    // Import templates
+    import Template1 from '../components/Templates/Template1.svelte';
+    import Template2 from '../components/Templates/Template2.svelte';
+    import Main1 from '../components/mainvisual/main1.svelte';
+    import Main2 from '../components/mainvisual/main2.svelte';
+    import HostInfo1 from '../components/hostinfo/HostInfo1.svelte';
+    import HostInfo2 from '../components/hostinfo/HostInfo2.svelte';
+    import OurStory1 from '../components/ourstory/OurStory1.svelte';
+    import DateVenue1 from '../components/datevenue/DateVenue1.svelte';
+    import Gallery1 from '../components/gallery/Gallery1.svelte';
 
-    function submitRSVP(newRSVP) {
-        rsvp.update(current => [...current, newRSVP]);
-    }
+    // Create a writable store for dateVenue with initial empty values
+    const dateVenue = writable({
+        date: '',
+        selectedTemplate:'',
+        mainImgBg:'',
+        font: '', //take it from the api later set
+        color: '', //take it from the api later set
+        imageUrl: '',
+        main_type:'', //the overlay image on the main visual picture
+        bride: '', //hostinfo
+        groom: '', //hostinfo
+        place: '', //host info
+        flower_bg: '', //flower background in host info page
+        host_info_bg: '', //host info bg for dome or flower bg
+        our_story_img1: '', //couple image
+        our_story_groom:'', //groom image
+        our_story_bride: '', //bride image
+        story_desc:'', //short description under the couple image
+        bride_dob:'', //in our story, bride date of birth
+        groom_dob:'', //in our story, groom date of birth
+        bride_hobbie:'', 
+        groom_hobbie:'',
+        bride_like:'', //what the bride likes about the groom
+        groom_like:'', //what the groom likes about the bride
+        start: '', //start time for the wedding function
+        reception:'',  //reception time in date venue component
+        end:'',  //end time for the function?
+        venue: '',
+        mapEmbedUrl: '',  //venue map url
+        venue_desc:''  //venue description -> currenlty not utilized (empty)
+    });
+
+    // Template selection
+    // let selectedTemplate = 'Template1';
+
+    // Fetch the data on page load
+    onMount(async () => {
+        try {
+            const response = await fetch('http://localhost:3000/template');
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+            const data = await response.json();
+            // Update the store with fetched data
+            dateVenue.set(data[0]);
+            console.log(data[0]);
+        } catch (error) {
+            console.error('Error fetching date and venue:', error);
+        }
+    });
 </script>
 
-<div class="app">
-    <!-- Left Background -->
-    <Background image={$background} />
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kameron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
 
-    <!-- Main Invitation Content -->
+<div class="page-wrapper">
     <div class="main-content">
-        <h1>Wedding Invitation</h1>
+        {#if $dateVenue.date} <!-- Check if the date is set before rendering the template -->
+        
+        {#if $dateVenue.mainImgBg === 'Main1'}
+                <Main1
+                image={$dateVenue.imageUrl} main_type={$dateVenue.main_type}
+                />
+            {:else if $dateVenue.mainImgBg === 'Main2'}
+                <Main2
+                image={$dateVenue.imageUrl} main_type={$dateVenue.main_type}
+                />
+            {/if}
+        <!-- <HostInfo1 bride={$dateVenue.bride} groom={$dateVenue.groom} date={$dateVenue.date} place={$dateVenue.place}></HostInfo1> -->
+        <!-- <HostInfo2 bride={$dateVenue.bride} groom={$dateVenue.groom} date={$dateVenue.date} place={$dateVenue.place} flower_bg={$dateVenue.flower_bg} ></HostInfo2> -->
+        <!-- host info template selection -->
+        {#if $dateVenue.host_info_bg === 'host_info1'}
+            <!-- for the dome flower background -->
+            <HostInfo1
+                bride={$dateVenue.bride} groom={$dateVenue.groom} date={$dateVenue.date} place={$dateVenue.place}/> 
+            {:else if $dateVenue.host_info_bg === 'host_info2'}
+            <!-- for flower background -->
+            <HostInfo2 bride={$dateVenue.bride} groom={$dateVenue.groom} date={$dateVenue.date} place={$dateVenue.place} flower_bg={$dateVenue.flower_bg} />
+            {/if}
 
-        <MainVisual image={$mainImage} />
-        <HostInfo bride={$hostInfo.bride} groom={$hostInfo.groom} />
-        <OurStory story={$ourStory} />
-        <DateVenue 
-            date={$dateVenue.date} 
-            venue={$dateVenue.venue} 
-            mapLink={$dateVenue.mapLink}
-            mapEmbedUrl={$dateVenue.mapEmbedUrl}
-        />
-        <Gallery images={$galleryImages} />
-        <Helpers 
-            bestMan={$helpers.bestMan} 
-            bridesmaid={$helpers.bridesmaid} 
-            bestManImage={$helpers.bestManImage} 
-            bridesmaidImage={$helpers.bridesmaidImage} 
-        />
-        <Accommodation accommodation={$accommodation} />
-        <Itinerary itinerary={$itinerary} />
-        <RSVP onSubmit={submitRSVP} />
-        <ThankYou message={$thankYou} />
+            <!-- our story template slection -->
+            <OurStory1 brideimg={$dateVenue.our_story_bride} groomimg={$dateVenue.our_story_groom} bride={$dateVenue.bride} groom={$dateVenue.groom} couple={$dateVenue.our_story_img1}
+                font={$dateVenue.font} color={$dateVenue.color}
+                story_description={$dateVenue.story_desc},
+                bride_dob={$dateVenue.bride_dob},
+                groom_dob={$dateVenue.groom_dob},
+                bride_hobbie={$dateVenue.bride_hobbie},
+                groom_hobbie={$dateVenue.groom_hobbie},
+                bride_like={$dateVenue.bride_like},
+                groom_like={$dateVenue.groom_like}>
+            </OurStory1>
+
+            <DateVenue1
+                font={$dateVenue.font} color={$dateVenue.color}
+                start_time={$dateVenue.start}
+                reception_time={$dateVenue.reception}
+                end_time={$dateVenue.end}
+                venue={$dateVenue.venue}
+                mapEmbedUrl={$dateVenue.mapEmbedUrl}
+                >
+            </DateVenue1>
+
+            <!-- start with the gallery1 variable inputs from the api -->
+
+            <Gallery1 font={dateVenue.font} color={$dateVenue.color} ></Gallery1> 
+
+        
+
+            {#if $dateVenue.selectedTemplate === 'Template1'}
+                <Template1
+                    date={$dateVenue.date}
+                    venue={$dateVenue.venue}
+                    mapEmbedUrl={$dateVenue.mapEmbedUrl}
+                />
+            {:else if $dateVenue.selectedTemplate === 'Template2'}
+                <Template2
+                    date={$dateVenue.date}
+                    venue={$dateVenue.venue}
+                    mapEmbedUrl={$dateVenue.mapEmbedUrl}
+                />
+            {/if}
+            
+        {/if}
+        
     </div>
-
-    <!-- Right Background -->
-    <Background image={$background} />
+    
 </div>
 
 <style>
-    .app, .app * {
-        text-align: center;
-    }
 
-    .main-content h1, .main-content h2, .main-content h3, .main-content p {
-        text-align: center;
-    }
-
-    .app {
+    .page-wrapper{
         display: flex;
-        min-height: 100vh;
-        font-family: 'Karla', sans-serif;
-        background-color: #F6E8C3;
+        justify-content: center;
     }
 
     .main-content {
-        flex: 1;
-        padding: 20px;
-        background-color: white;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         margin: 0 15px;
-        animation: fadeIn 1.5s ease-in-out;
         border-radius: 10px;
+        width: 450px;
     }
 
-    .main-content h1 {
-        font-family: 'Kapakana', sans-serif;
-        color: #333;
-    }
-
-    h1, h2, h3 {
-        color: #333;
-        margin-bottom: 10px;
-    }
-
-    p {
-        color: #555;
-        line-height: 1.6;
-        font-family: 'Kaisei Decol', sans-serif;
-    }
-
-    body {
-        font-family: 'Karla', sans-serif;
-    }
-
-    @keyframes fadeIn {
-        0% { opacity: 0; }
-        100% { opacity: 1; }
-    }
 </style>
-

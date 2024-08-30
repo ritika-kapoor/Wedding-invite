@@ -1,0 +1,32 @@
+{
+        "template": 
+         [ { 
+              "date": "10th October 2024",
+              "selectedTemplate": "Template1",
+              "mainImgBg":"Main1",
+              "imageUrl": "https://assets.vogue.com/photos/645bf6454b2ed368ebfd23b6/4:3/w_3011,h_2258,c_limit/Treasure_Kyle_Vogue057.JPG",
+              "main_type": "main2",
+              "bride": "ｽﾃﾌｧﾝに",
+              "groom": "ｽﾃﾌｧﾝ",
+              "place": "大阪",
+              "flower_bg": "flower_bg2",
+              "host_info_bg": "host_info2",
+              "font": "kaisei",
+              "color": "gold",
+              "our_story_img1": "https://i.pinimg.com/736x/2d/2c/ec/2d2cec2f033268b345bc1d237e8bb570.jpg",
+              "our_story_groom": "https://www.usmagazine.com/wp-content/uploads/2022/04/Meat-Head-Dylan-Sprouse-Shows-Off-Toned-Physique-Amid-Weight-Loss-Journey-001.jpg?crop=0px%2C0px%2C2000px%2C1131px&resize=1200%2C675&quality=86&strip=all",
+              "our_story_bride": "https://mediacenter.longines.com/wp-content/uploads/2024/06/6a1d0baa72d8eadc2bd0f09343ae1d0c-1920x1080.jpg.webp",
+              "story_desc": "私たちの恋愛物語は、偶然の出会いから始まりました。そして美しい友情に育ち、さらに素晴らしいロマンスへと花開きました。笑顔と涙、試練と栄光を経て、私たちの絆はますます強くなりました",
+              "bride_dob": "2000年5月7日　東京出身",
+              "groom_dob": "1999年12月7日　大阪出身",
+              "bride_hobbie": "カフェ巡り",
+              "groom_hobbie": "旅行",
+              "bride_like": "勤勉な人",
+              "groom_like": "素直、優しい",
+              "venue": "アートグレイス ウエディングコースト",
+              "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.615127066532!2d139.9255436!3d35.6372135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60187c3289971731%3A0x97e130cd05bcd38f!2sArtGrace%20Wedding%20Coast!5e0!3m2!1sen!2sjp!4v1725001313297!5m2!1sen!2sjp",
+              "start": "10:30",
+              "reception": "10:00",
+              "end": "11:00"
+          }]
+}
