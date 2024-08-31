@@ -3,8 +3,6 @@
     import { writable } from 'svelte/store';
 
     // Import templates
-    import Template1 from '../components/Templates/Template1.svelte';
-    import Template2 from '../components/Templates/Template2.svelte';
     import Main1 from '../components/mainvisual/main1.svelte';
     import Main2 from '../components/mainvisual/main2.svelte';
     import HostInfo1 from '../components/hostinfo/HostInfo1.svelte';
@@ -12,6 +10,8 @@
     import OurStory1 from '../components/ourstory/OurStory1.svelte';
     import DateVenue1 from '../components/datevenue/DateVenue1.svelte';
     import Gallery1 from '../components/gallery/Gallery1.svelte';
+    import Rsvp1 from '../components/rsvp/RSVP1.svelte';
+    import Thankyou1 from '../components/thankyou/ThankYou1.svelte';
 
     // Create a writable store for dateVenue with initial empty values
     const dateVenue = writable({
@@ -42,7 +42,11 @@
         end:'',  //end time for the function?
         venue: '',
         mapEmbedUrl: '',  //venue map url
-        venue_desc:''  //venue description -> currenlty not utilized (empty)
+        venue_desc:'',  //venue description -> currenlty not utilized (empty)
+        image1:'', //gallery image 1
+        image2:'',  //gallery image 2
+        image3:'',  //gallery image 3
+        image4:''  //gallery image 4
     });
 
     // Template selection
@@ -119,26 +123,11 @@
                 >
             </DateVenue1>
 
-            <!-- start with the gallery1 variable inputs from the api -->
-
-            <Gallery1 font={dateVenue.font} color={$dateVenue.color} ></Gallery1> 
-
-        
-
-            {#if $dateVenue.selectedTemplate === 'Template1'}
-                <Template1
-                    date={$dateVenue.date}
-                    venue={$dateVenue.venue}
-                    mapEmbedUrl={$dateVenue.mapEmbedUrl}
-                />
-            {:else if $dateVenue.selectedTemplate === 'Template2'}
-                <Template2
-                    date={$dateVenue.date}
-                    venue={$dateVenue.venue}
-                    mapEmbedUrl={$dateVenue.mapEmbedUrl}
-                />
-            {/if}
+            <Gallery1 font={$dateVenue.font} color={$dateVenue.color} image1={$dateVenue.image1} image2={$dateVenue.image2} image3={$dateVenue.image3} image4={$dateVenue.image4}></Gallery1> 
             
+            <Rsvp1 font={$dateVenue.font} color={$dateVenue.color} date={$dateVenue.date}></Rsvp1>
+
+            <Thankyou1 font={$dateVenue.font} color={$dateVenue.color}></Thankyou1>
         {/if}
         
     </div>

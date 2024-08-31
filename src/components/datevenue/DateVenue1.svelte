@@ -93,9 +93,9 @@
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
     </div>
-    <div class="venue-loc" style="font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
+    <!-- <div class="venue-loc" style="font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
         Venue loc?
-      </div>
+      </div> -->
   </div>
   
   <style>

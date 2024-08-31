@@ -3,38 +3,79 @@
     export let image2;
     export let image3;
     export let image4;
+    export let font;
+    export let color;
   
-    // You can customize the number of images and their arrangement as needed.
+    let fontLink1 = '';
+    let fontFamilyPrimary = '';
+    let textColor = '';
+    let isNoto = false;
+  
+    // Set the fonts and colors based on the API value
+    switch (font) {
+      case 'noto':
+        fontLink1 = 'https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap';
+        fontFamilyPrimary = "'Kalam', cursive";
+        isNoto = true;
+        break;
+      case 'kaisei':
+        fontLink1 = 'https://fonts.cdnfonts.com/css/kapakana';
+        fontFamilyPrimary = "'Kapakana', sans-serif";
+        break;
+    }
+  
+    switch (color) {
+      case 'purple':
+        textColor = 'purple';
+        break;
+      case 'black':
+        textColor = 'black';
+        break;
+      case 'gold':
+        textColor = '#E3BE54'; // Gold color hex code
+        break;
+      default:
+        textColor = 'red';
+        break;
+    }
   </script>
   
-  <div class="gallery">
-    <div class="image-container">
-      <img src={image1} alt="Image 1">
-      <img src={image2} alt="Image 2">
-      <img src={image3} alt="Image 3">
-      <img src={image4} alt="Image 4">
+  <svelte:head>
+    <link rel="stylesheet" href={fontLink1}>
+  </svelte:head>
+  
+  <div class="gallery" style="color: {textColor};">
+    <h1 class="heading" style="font-family: {fontFamilyPrimary}; font-size: {isNoto ? '40px' : '65px'}; font-weight: {isNoto ? '700' : '400'};">Gallery</h1>
+    <div class="image-grid">
+      <img src={image1} alt="Image 1" class="grid-image">
+      <img src={image2} alt="Image 2" class="grid-image">
+      <img src={image3} alt="Image 3" class="grid-image">
+      <img src={image4} alt="Image 4" class="grid-image">
     </div>
   </div>
   
   <style>
     .gallery {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
+      text-align: center;
+      padding: 60px;
     }
   
-    .image-container {
+    .gallery-heading {
+      font-size: 40px; /* Adjust size according to API */
+      margin-bottom: 20px;
+    }
+  
+    .image-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
-      width: 80%;
     }
   
-    .image-container img {
+    .grid-image {
       width: 100%;
-      height: auto;
+      height: 100%;
       object-fit: cover;
+      border-radius: 20px;
     }
   </style>
   

@@ -3,7 +3,7 @@
     export let groom;
     export let date;
     export let place;
-    let bgImageUrl = '/main1_bg5.png';
+    let bgImageUrl = '/host_info1.png';
     // Optional: Log only if needed
     // switch (main_type) {
     //     case 'main5':
