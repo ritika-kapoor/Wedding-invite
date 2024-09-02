@@ -7,13 +7,13 @@
     let bgImageUrl = '';
     switch (flower_bg) {
         case 'flower_bg2':
-            bgImageUrl = '/host_info2.png';
+            bgImageUrl = 'https://www.wearelakers.net/images/host_info2.png';
             break;
         case 'flower_bg3':  
-            bgImageUrl = '/host_info3.png';  
+            bgImageUrl = 'https://www.wearelakers.net/images/host_info3.png';  
             break;
         case 'flower_bg4':  
-            bgImageUrl = '/host_info4.png';  
+            bgImageUrl = 'https://www.wearelakers.net/images/host_info4.png';  
             break;
 
 
