@@ -10,14 +10,15 @@
     import Rsvp1 from '../components/rsvp/RSVP1.svelte';
     import Thankyou1 from '../components/thankyou/ThankYou1.svelte';
 
-    export let dateVenue;
-    console.log(dateVenue);
+    
+
+    
 
 </script>
 
 
 
-<Main1 image={$dateVenue.imageUrl} main_type={$dateVenue.main_type} />
+<!-- <Main1 image={$dateVenue.imageUrl} main_type={$dateVenue.main_type} />
 
 <HostInfo1 bride={$dateVenue.bride_first_name} groom={$dateVenue.groom_first_name} date={$dateVenue.date} place={$dateVenue.place} />
 
@@ -34,12 +35,11 @@
     start_time={$dateVenue.start} reception_time={$dateVenue.reception}
     end_time={$dateVenue.end} venue={$dateVenue.venue} mapEmbedUrl={$dateVenue.mapEmbedUrl}
     font="noto" color="gold" />
+-->
 
 <Gallery1
-    font="noto" color="gold"
-    image1={$dateVenue.image1} image2={$dateVenue.image2}
-    image3={$dateVenue.image3} image4={$dateVenue.image4} />
+    font="noto" color="gold"/>
 
-<Rsvp1 font="noto" color="gold" date={$dateVenue.date} />
+<!-- <Rsvp1 font="noto" color="gold" date={dateVenue} /> -->
 
-<Thankyou1 font="noto" color="gold" />
+<Thankyou1 font="noto" color="gold"/>

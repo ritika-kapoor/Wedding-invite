@@ -1,8 +1,7 @@
 <script>
-    export let image1;
-    export let image2;
-    export let image3;
-    export let image4;
+    import { gallery } from '../../store';
+
+
     export let font;
     export let color;
   
@@ -47,10 +46,11 @@
   <div class="gallery" style="color: {textColor};">
     <h1 class="heading" style="font-family: {fontFamilyPrimary}; font-size: {isNoto ? '40px' : '65px'}; font-weight: {isNoto ? '700' : '400'};">Gallery</h1>
     <div class="image-grid">
-      <img src={image1} alt="Image 1" class="grid-image">
-      <img src={image2} alt="Image 2" class="grid-image">
-      <img src={image3} alt="Image 3" class="grid-image">
-      <img src={image4} alt="Image 4" class="grid-image">
+  
+      <img src={$gallery.image1} alt="Image 1" class="grid-image">
+      <img src={$gallery.image2} alt="Image 2" class="grid-image">
+      <img src={$gallery.image3} alt="Image 3" class="grid-image">
+      <img src={$gallery.image4} alt="Image 4" class="grid-image">
     </div>
   </div>
   
@@ -58,11 +58,6 @@
     .gallery {
       text-align: center;
       padding: 60px;
-    }
-  
-    .gallery-heading {
-      font-size: 40px; /* Adjust size according to API */
-      margin-bottom: 20px;
     }
   
     .image-grid {
