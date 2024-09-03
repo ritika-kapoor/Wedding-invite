@@ -1,7 +1,5 @@
 <script>
-  export let date;
-  export let font;
-  export let color;
+  
 
   let formattedDate = '';
   let selectedOption = '';
@@ -36,7 +34,7 @@
   };
 
   // Call the function to format the date
-  formatDate(date);
+  // formatDate(date);
 
   let fontLink1 = '';
   let fontLink2 = '';
