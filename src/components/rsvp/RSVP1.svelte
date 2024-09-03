@@ -1,40 +1,31 @@
 <script>
-  
 
-  let formattedDate = '';
+  import { date } from '../../store';
+  import Time from 'svelte-time';
+  
+  export let font;
+  export let color;
+
   let selectedOption = '';
 
-  const formatDate = (dateString) => {
-    const dateParts = dateString.split(' ');
-    const day = dateParts[0].replace(/\D/g, '');
-    const month = dateParts[1];
-    const year = dateParts[2];
+  //function for guest entry form
+  let result = null
+  let isWeddingParticipating = false;
+  let isReceptionParticipating = false;
 
-    const monthMapping = {
-      January: '01',
-      February: '02',
-      March: '03',
-      April: '04',
-      May: '05',
-      June: '06',
-      July: '07',
-      August: '08',
-      September: '09',
-      October: '10',
-      November: '11',
-      December: '12'
-    };
+  async function doPost () {
+      const res = await fetch('https://api.wearelakers.net/invitation/participating/update', {
+      method: 'POST',
+      body: JSON.stringify({
+        invitation_id: 1,
+        is_wedding_participating: isWeddingParticipating,
+        is_reception_participating: isReceptionParticipating,
+      })
+    })
 
-    const formattedMonth = monthMapping[month];
-    if (formattedMonth) {
-      formattedDate = `${year}年${formattedMonth}月${day}日 （木）`;
-    } else {
-      formattedDate = 'Invalid Date';
-    }
-  };
-
-  // Call the function to format the date
-  // formatDate(date);
+    const json = await res.json()
+    result = JSON.stringify(json)
+  }
 
   let fontLink1 = '';
   let fontLink2 = '';
@@ -90,7 +81,7 @@
     お手数ですが　下記お日にち迄に <br> 出欠情報のご連絡をお願い申し上げます
   </p>
   <p style="font-size: {isNoto ? '20px' : '20px'}; font-weight: {isNoto ? '700' : '400'}">
-    {formattedDate}
+    <Time timestamp={$date.date} format="YYYY年MM月DD日" />
   </p>
   <p style="font-size: {isNoto ? '17px' : '16px'}; font-weight: 400;">
     期⽇までのご連絡が難しい場合には <br> ご一報いただけますと幸いです
@@ -106,6 +97,7 @@
         name="wedding" 
         value="結婚式" 
         style="accent-color: {textColor};"
+        bind:checked={isWeddingParticipating}
       />
       結婚式
     </label>
@@ -115,6 +107,7 @@
         name="kōen" 
         value="広縁" 
         style="accent-color: {textColor};"
+        bind:checked={isReceptionParticipating}
       />
       広縁
     </label>
@@ -144,13 +137,14 @@
     </button>
   </div>
 
-  <button type="submit" style="background-color: {textColor}; color: white;">Submit</button>
+  <button type="submit" on:click|preventDefault={doPost} style="background-color: {textColor}; color: white;">Submit</button>
 </div>
 
 <style>
   .rsvp {
     text-align: center;
-    padding: 20px;
+    padding: 5px;
+    background-color: white;
   }
 
   .checkboxes {

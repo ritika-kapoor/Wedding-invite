@@ -1,5 +1,5 @@
 <script>
-    export let image;
+    import { main_image } from '../../store';
     export let main_type;
     let bgImageUrl = '';
     // Optional: Log only if needed
@@ -16,9 +16,9 @@
 
 <div class="main-visual">
     <div class="visual-cta" style="background-image: url({bgImageUrl});">
-      {#if image}
+      {#if $main_image.image}
         <!-- Main image -->
-        <img src={image} alt="Bride and Groom" class="main-image" />
+        <img src={$main_image.image} alt="Bride and Groom" class="main-image" />
       {:else}
         <p>Image not available</p>
       {/if}

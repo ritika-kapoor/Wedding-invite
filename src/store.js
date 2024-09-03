@@ -23,6 +23,59 @@ export const template = derived(apiData, ($apiData) => {
   }
 });
 
+export const main_image = derived(apiData, ($apiData) => {
+  return {
+    image: $apiData.main_image
+  }
+});
+
+export const date = derived(apiData, ($apiData) => {
+  return {
+    date: $apiData.event_date
+  }
+});
+
+export const host_info = derived(apiData, ($apiData) => {
+  return {
+    date: $apiData.event_date,
+    groom: $apiData.groom_first_name,
+    bride: $apiData.bride_first_name,
+    place: $apiData.venue_city
+  }
+});
+
+export const date_venue = derived(apiData, ($apiData) => {
+  return {
+    start_time: $apiData.event_start_time,
+    reception_time: $apiData.event_regitration_time,
+    end_time: $apiData.event_end_time,
+    venue: $apiData.event_venue_name,
+    mapEmbedUrl: $apiData.event_venue_map_address ,
+    venue_address: $apiData.event_venue_address,
+    venue_phone: $apiData.event_venue_phone,
+    venue_link: $apiData.event_venue_link
+  }
+});
+
+export const our_story = derived(apiData, ($apiData) => {
+  return {
+    couple: $apiData.gallery_image1_url,
+    groom: $apiData.groom_first_name,
+    bride: $apiData.bride_first_name,
+    groomimg: $apiData.gallery_image4_url,
+    brideimg: $apiData.gallery_image1_url,
+    story_description: $apiData.our_story,
+    bride_dob: $apiData.bride_dob,
+    groom_dob: $apiData.groom_dob,
+    bride_birth: $apiData.bride_birthplace,
+    groom_birth: $apiData.groom_birthplace,
+    bride_hobby: $apiData.bride_hobby,
+    groom_hobby: $apiData.groom_hobby,
+    bride_like: $apiData.bride_fav_things,
+    groom_like: $apiData.groom_fav_things,
+  }
+});
+
 export const gallery = derived(apiData, ($apiData) => {
   return {
     image1: $apiData.gallery_image1_url,

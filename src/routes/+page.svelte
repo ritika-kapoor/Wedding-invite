@@ -8,9 +8,11 @@
     import Template1 from '../templates/Template1.svelte';
     import Template2 from '../templates/Template2.svelte';
     import Template3 from '../templates/Template3.svelte';
+    import Template4 from '../templates/Template4.svelte';
+
 
     onMount(async () => {
-        fetch("https://mpc37d901f85b4f1ee16.free.beeceptor.com/")
+        fetch('http://localhost:3000/template')
         .then(response => response.json())
         .then(data => {
                 console.log(data);
@@ -31,6 +33,8 @@
                 <Template2 />
             {:else if $template.number === 3}
                 <Template3 />
+            {:else if $template.number === 4}
+                <Template4 />
             {/if}
         {/if}
     </div>

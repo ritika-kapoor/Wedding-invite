@@ -58,6 +58,7 @@
     .gallery {
       text-align: center;
       padding: 60px;
+      background-color: white;
     }
   
     .image-grid {

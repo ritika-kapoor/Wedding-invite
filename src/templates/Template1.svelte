@@ -1,6 +1,6 @@
 <script>
-        // Import components
-        import Main1 from '../components/mainvisual/main1.svelte';
+    // Import components
+    import Main1 from '../components/mainvisual/main1.svelte';
     // import Main2 from '../components/mainvisual/main2.svelte';
     import HostInfo1 from '../components/hostinfo/HostInfo1.svelte';
     // import HostInfo2 from '../components/hostinfo/HostInfo2.svelte';
@@ -9,37 +9,31 @@
     import Gallery1 from '../components/gallery/Gallery1.svelte';
     import Rsvp1 from '../components/rsvp/RSVP1.svelte';
     import Thankyou1 from '../components/thankyou/ThankYou1.svelte';
-
-    
-
     
 
 </script>
 
 
+    <Main1 main_type=main0 />
+        <div class="template1">
+            
+            <HostInfo1/>
 
-<!-- <Main1 image={$dateVenue.imageUrl} main_type={$dateVenue.main_type} />
+            <OurStory1 font="noto" color="gold"/>
+            
+            <DateVenue1 font="noto" color="gold" />
+            
+            <Gallery1 font="noto" color="gold"/>
+            
+            <Rsvp1 font="noto" color="gold" />
+            
+            <Thankyou1 font="noto" color="gold"/>
+            
+        </div>
 
-<HostInfo1 bride={$dateVenue.bride_first_name} groom={$dateVenue.groom_first_name} date={$dateVenue.date} place={$dateVenue.place} />
-
-<OurStory1
-    brideimg={$dateVenue.our_story_bride} groomimg={$dateVenue.our_story_groom} couple={$dateVenue.our_story_img1}
-    bride={$dateVenue.bride_first_name} groom={$dateVenue.groom_first_name}
-    font="noto" color="gold"
-    story_description={$dateVenue.story_desc} bride_dob={$dateVenue.bride_dob}
-    groom_dob={$dateVenue.groom_dob} bride_hobbie={$dateVenue.bride_hobbie}
-    groom_hobbie={$dateVenue.groom_hobbie} bride_like={$dateVenue.bride_like}
-    groom_like={$dateVenue.groom_like} />
-
-<DateVenue1
-    start_time={$dateVenue.start} reception_time={$dateVenue.reception}
-    end_time={$dateVenue.end} venue={$dateVenue.venue} mapEmbedUrl={$dateVenue.mapEmbedUrl}
-    font="noto" color="gold" />
--->
-
-<Gallery1
-    font="noto" color="gold"/>
-
-<!-- <Rsvp1 font="noto" color="gold" date={dateVenue} /> -->
-
-<Thankyou1 font="noto" color="gold"/>
+<style>
+    .template1 {
+        padding: 20px;
+        background-color: #FDF0C6;
+    }
+</style>
