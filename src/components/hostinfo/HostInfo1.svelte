@@ -60,7 +60,7 @@
     .host-container {
       background-color: rgb(255, 255, 255); /* Semi-transparent brown background */
       border-radius: 50% 50% 4px 4px;
-      margin: 15px;
+      margin: 0px 15px;
       height: 400px;
       max-width: 600px;
       /* text-align: center; */
