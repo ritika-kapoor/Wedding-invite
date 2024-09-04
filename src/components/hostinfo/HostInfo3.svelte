@@ -81,7 +81,7 @@
 
     .invitation-text {
         margin-bottom: 20px; /* Adds space after "You are invited to the wedding of" */
-        font-size: 36px;
+        font-size: 42px;
     }
 
     .bride-groom-container {
@@ -109,12 +109,12 @@
     }
 
     .date {
-        font-size: 36px;
+        font-size: 45px;
         font-family: "Kapakana", sans-serif;
         display: block; /* Ensures the date remains on a new line */
     }
     .place{
-        font-size: 20px;
+        font-size: 45px;
     }
 </style>
 

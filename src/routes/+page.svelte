@@ -16,7 +16,7 @@
 
 
     onMount(async () => {
-        fetch(`https://api.wearelakers.net/invitation/content?invitation_id=${invitation_id}&invitation_content_id=${invitation_content_id}`)
+        fetch(`https://api.wearelakers.net/invitation?invitation_id=${invitation_id}`)
         .then(response => response.json())
         .then(data => {
                 console.log(data);
