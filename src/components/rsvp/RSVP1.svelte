@@ -1,6 +1,5 @@
 <script>
-
-  import { date } from '../../store';
+  import { date, sendInvitationId } from '../../store';
   import Time from 'svelte-time';
   
   export let font;
@@ -14,10 +13,20 @@
   let isReceptionParticipating = false;
 
   async function doPost () {
+
+    let formData = new FormData();
+    formData.append('invitation_id', $sendInvitationId,); 
+    formData.append('is_wedding_participating', isWeddingParticipating); 
+    formData.append('is_reception_participating', isReceptionParticipating);
       const res = await fetch('https://api.wearelakers.net/invitation/participating/update', {
       method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      // body: formData
       body: JSON.stringify({
-        invitation_id: 1,
+        invitation_id: $sendInvitationId,
         is_wedding_participating: isWeddingParticipating,
         is_reception_participating: isReceptionParticipating,
       })

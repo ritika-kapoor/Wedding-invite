@@ -5,7 +5,7 @@ This assumes the data you're pulling back will be an array.
 If it's going to be an object, default this to an empty object.
 **/
 export const apiData = writable([]);
-
+export const invitationId = writable("");
 /** Data transformation.
 For our use case, we only care about the drink names, not the other information.
 Here, we'll create a derived store to hold the drink names.
@@ -16,6 +16,10 @@ Here, we'll create a derived store to hold the drink names.
 //   }
 //   return [];
 // });
+
+export const sendInvitationId = derived(invitationId, ($invitationId) => {
+  return $invitationId;
+});
 
 export const template = derived(apiData, ($apiData) => {
   return {
@@ -62,8 +66,8 @@ export const our_story = derived(apiData, ($apiData) => {
     couple: $apiData.gallery_image1_url,
     groom: $apiData.groom_first_name,
     bride: $apiData.bride_first_name,
-    groomimg: $apiData.gallery_image4_url,
-    brideimg: $apiData.gallery_image1_url,
+    groomimg: $apiData.groom_image_url,
+    brideimg: $apiData.bride_image_url,
     story_description: $apiData.our_story,
     bride_dob: $apiData.bride_dob,
     groom_dob: $apiData.groom_dob,

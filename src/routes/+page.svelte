@@ -1,7 +1,11 @@
 <script>
+    import { page } from '$app/stores'
+    const invitation_id = $page.url.searchParams.get('invitation_id')
+    console.log(invitation_id)
+    const invitation_content_id = $page.url.searchParams.get('invitation_content_id')
     import { onMount } from 'svelte';
     
-    import { apiData, template } from '../store.js';
+    import { apiData, template, invitationId } from '../store.js';
 
 
     // Correct imports for the templates
@@ -12,16 +16,18 @@
 
 
     onMount(async () => {
-        fetch('http://localhost:3000/template')
+        fetch(`https://api.wearelakers.net/invitation/content?invitation_id=${invitation_id}&invitation_content_id=${invitation_content_id}`)
         .then(response => response.json())
         .then(data => {
                 console.log(data);
             apiData.set(data);
+            invitationId.set(invitation_id);
         }).catch(error => {
             console.log(error);
             return [];
         });
         });
+        
 </script>
 
 <div class="page-wrapper">
