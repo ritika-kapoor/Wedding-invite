@@ -72,7 +72,7 @@
   <h2 class="subheading" style="color: {textColor}; font-family: {fontFamilyPrimary}; font-size: {isNoto ? '20px' : '36px'}; font-weight: {isNoto ? '700' : '400'};">
     Groom <br> {groom}
   </h2>
-  <img src={groomimg} alt="Groom" class="groom-image">
+  <img src={`https://www.wearelakers.net/${our_story.groomimg}`} alt="Groom" class="groom-image">
   <p class="description groom-bride" style="color: {textColor}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
     {groom_dob} <br>
     趣味: {groom_hobbie} <br>
@@ -82,7 +82,7 @@
   <h2 class="subheading" style="color: {textColor}; font-family: {fontFamilyPrimary}; font-size: {isNoto ? '20px' : '36px'}; font-weight: {isNoto ? '700' : '400'};">
     Bride <br> {bride} 
   </h2>
-  <img src={brideimg} alt="Bride" class="bride-image">
+  <img src={`https://www.wearelakers.net/${our_story.brideimg}`} alt="Bride" class="bride-image">
   <p class="description groom-bride" style="color: {textColor}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
     {bride_dob} <br>
     趣味: {bride_hobbie} <br>

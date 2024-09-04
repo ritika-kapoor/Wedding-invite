@@ -17,7 +17,7 @@
     <div class="visual-cta">
       {#if image}
         <!-- Main image -->
-        <img src={image} alt="Bride and Groom" class="main-image" />
+        <img src={`https://www.wearelakers.net/${main_image.image}`} alt="Bride and Groom" class="main-image" />
         
         <!-- Overlay image -->
         <img src={bgImageUrl} alt="Overlay Image" class="overlay-image" />
