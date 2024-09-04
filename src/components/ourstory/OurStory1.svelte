@@ -64,7 +64,7 @@
   <h2 class="subheading" style="color: {textColor}; font-family: {fontFamilyPrimary}; font-size: {isNoto ? '20px' : '36px'}; font-weight: {isNoto ? '700' : '400'};">
     Groom <br> {$our_story.groom}
   </h2>
-  <img src={`https://www.wearelakers.net/${our_story.groomimg}`} alt="Groom" class="groom-image">
+  <img src={`https://www.wearelakers.net/${$our_story.groomimg}`} alt="Groom" class="groom-image">
   <p class="description groom-bride" style="color: {textColor}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
     {$our_story.groom_dob} &emsp; {$our_story.groom_birth} <br>
     趣味: {$our_story.groom_hobby} <br>
@@ -74,7 +74,8 @@
   <h2 class="subheading" style="color: {textColor}; font-family: {fontFamilyPrimary}; font-size: {isNoto ? '20px' : '36px'}; font-weight: {isNoto ? '700' : '400'};">
     Bride <br> {$our_story.bride} 
   </h2>
-  <img src={`https://www.wearelakers.net/${our_story.brideimg}`} alt="Bride" class="bride-image">
+
+  <img src={`https://www.wearelakers.net/${$our_story.brideimg}`} alt="Bride" class="bride-image">
   <p class="description groom-bride" style="color: {textColor}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
     {$our_story.bride_dob} &emsp; {$our_story.bride_birth} <br>
     趣味: {$our_story.bride_hobby} <br>

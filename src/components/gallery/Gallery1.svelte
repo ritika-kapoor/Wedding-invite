@@ -47,10 +47,10 @@
     <h1 class="heading" style="font-family: {fontFamilyPrimary}; font-size: {isNoto ? '40px' : '65px'}; font-weight: {isNoto ? '700' : '400'};">Gallery</h1>
     <div class="image-grid">
   
-      <img src={$gallery.image1} alt="Image 1" class="grid-image">
-      <img src={$gallery.image2} alt="Image 2" class="grid-image">
-      <img src={$gallery.image3} alt="Image 3" class="grid-image">
-      <img src={$gallery.image4} alt="Image 4" class="grid-image">
+      <img src={`https://www.wearelakers.net/${$gallery.image1}`} alt="Image 1" class="grid-image">
+      <img src={`https://www.wearelakers.net/${$gallery.image2}`} alt="Image 2" class="grid-image">
+      <img src={`https://www.wearelakers.net/${$gallery.image3}`} alt="Image 3" class="grid-image">
+      <img src={`https://www.wearelakers.net/${$gallery.image4}`} alt="Image 4" class="grid-image">
     </div>
   </div>
   

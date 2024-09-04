@@ -109,12 +109,12 @@
     }
 
     .date {
-        font-size: 45px;
+        font-size: 40px;
         font-family: "Kapakana", sans-serif;
         display: block; /* Ensures the date remains on a new line */
     }
     .place{
-        font-size: 45px;
+        font-size: 40px;
     }
 </style>
 

@@ -21,7 +21,7 @@ import { main_image } from '../../store';
     <div class="visual-cta">
       {#if $main_image.image}
         <!-- Main image -->
-        <img src={`https://www.wearelakers.net/${main_image.image}`} alt="Bride and Groom" class="main-image" />
+        <img src={`https://www.wearelakers.net/${$main_image.image}`} alt="Bride and Groom" class="main-image" />
         
         <!-- Overlay image -->
         <img src={bgImageUrl} class="overlay-image" />
