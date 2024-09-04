@@ -1,6 +1,22 @@
 <script>
     import { host_info } from '../../store';
     import Time from 'svelte-time';
+    
+    export let flower_bg;
+    let bgImageUrl = '';
+    switch (flower_bg) {
+        case 'flower_bg2':
+            bgImageUrl = 'https://www.wearelakers.net/images/host_info2.png';
+            break;
+        case 'flower_bg3':  
+            bgImageUrl = 'https://www.wearelakers.net/images/host_info3.png';  
+            break;
+        case 'flower_bg4':  
+            bgImageUrl = 'https://www.wearelakers.net/images/host_info4.png';  
+            break;
+
+
+    }
 </script>
 
 <head>
@@ -12,7 +28,7 @@
 
 
 <div class="main-visual">
-    <div class="visual-cta" style="background-color: white">
+    <div class="visual-cta" style="background-image: url('{bgImageUrl}');">
         <div class="host-container-cta">
             <div class="host-container">
                 <p class="invitation-text">You are invited to <br> the wedding of</p>
@@ -49,16 +65,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        /* height: 100vh; */
+        height: 100vh;
     }
 
     .host-container {
         background-color: rgba(255, 255, 255, 0); /* Transparent background */
-        padding: 40px;
+        padding: 20px;
         border-radius: 10px;
         max-width: 600px;
         text-align: center;
-        color: purple;
+        color: black;
         font-family: "Kapakana", sans-serif;
         font-weight: 400;
     }

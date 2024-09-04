@@ -1,30 +1,19 @@
 <script>
-    export let bride;
-    export let groom;
-    export let date;
-    export let place;
+    import { host_info } from '../../store';
     let bgImageUrl = '/host_info1.png';
-    // Optional: Log only if needed
-    // switch (main_type) {
-    //     case 'main5':
-    //         bgImageUrl = '/main1_bg5.png';
-    //         break;
-    //     case 'main4':  
-    //         bgImageUrl = '/main1_bg4.png';  
-    //         break;
 
-    // }
   </script>
+
 <div class="main-visual">
     <!-- Background Image -->
     <div class="visual-cta">
     <img src={bgImageUrl} alt="Background Image" class="background-image" />
-      {#if bride}
+      {#if $host_info.bride}
         <div class="host-container-cta">
           <div class="host-container">
             You are invited to <br> the wedding of <br> 
-            <span class="bride">{bride} <br> & <br> {groom}</span><br>
-            <span class="date">{date} <br> {place} </span>
+            <span class="bride">{$host_info.bride} <br> & <br> {$host_info.groom}</span><br>
+            <span class="date">{$host_info.date} <br> {$host_info.place} </span>
           </div>
         </div>
       {/if}
@@ -53,14 +42,14 @@
     }
   
     .host-container-cta{
-     background-color: #E3BE54;
+     background-color: #FDF0C6;
       text-align: center;
       z-index:1;
     }
     .host-container {
       background-color: rgb(255, 255, 255); /* Semi-transparent brown background */
       border-radius: 50% 50% 4px 4px;
-      margin: 15px;
+      /* margin: 0px 15px; */
       height: 400px;
       max-width: 600px;
       /* text-align: center; */
@@ -83,6 +72,7 @@
         font-weight: 700;
         line-height: 51px;
         font-size: 32px;
+        margin-top: 12px;
     }
 
   </style>

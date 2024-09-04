@@ -49,8 +49,9 @@
   <style>
     .thank-you {
       text-align: center;
-      padding: 50px;
-      color: #000; /* Default color, you can adjust or make it dynamic if needed */
+      padding: 100px;
+      color: #000; 
+      background-color: white;
     }
   </style>
   
