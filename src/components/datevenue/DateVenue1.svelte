@@ -1,12 +1,11 @@
 <script>
-    export let start_time;
-    export let reception_time;
-    export let end_time;
-    export let venue;
-    export let mapEmbedUrl;
-    export let color;
+    import { date_venue } from '../../store';
+    import Time from 'svelte-time';
+
     export let font;
-  
+    export let color;
+
+
     let fontLink1 = '';
     let fontLink2 = '';
     let fontFamilyPrimary = '';
@@ -58,7 +57,7 @@
         開始
     </div>
     <div class="start-time" style="font-family: {fontFamilyPrimary}; font-size: {isNoto ? '40px' : '50px'}; font-weight: {isNoto ? '700' : '400'};">
-      {start_time}
+      <Time timestamp={$date_venue.start_time} format="HH:mm" />
     </div>
   
     <div class="reception-end">
@@ -66,14 +65,14 @@
         受付
       </span>
       <span class="reception-time" style="font-family: {fontFamilySecondary}; font-size: {isNoto ? '20px' : '26px'}; font-weight: {isNoto ? '400' : '400'};">
-        {reception_time}
+        <Time timestamp={$date_venue.reception_time} format="HH:mm"/>
       </span>
       <span class="separator">｜</span>
       <span class="end" style="font-family: {fontFamilyPrimary}; font-size: {isNoto ? '20px' : '20px'}; font-weight: {isNoto ? '700' : '400'};">
         終了
       </span>
       <span class="end-time" style="font-family: {fontFamilySecondary}; font-size: {isNoto ? '20px' : '26px'}; font-weight: {isNoto ? '400' : '400'};">
-        {end_time}
+        <Time timestamp={$date_venue.end_time} format="HH:mm"/>
       </span>
     </div>
   
@@ -81,10 +80,10 @@
       Venue
     </div>
     <div class="venue-name" style="font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
-      {venue}
+      {$date_venue.venue}
     </div>
     <div class="venue-location">
-          <iframe src={mapEmbedUrl}
+          <iframe src={$date_venue.mapEmbedUrl}
       width="100%"
       height="300"
       style="border:0;"
@@ -93,9 +92,11 @@
       referrerpolicy="no-referrer-when-downgrade">
     </iframe>
     </div>
-    <!-- <div class="venue-loc" style="font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
-        Venue loc?
-      </div> -->
+    <div class="venue-loc" style="font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
+      {$date_venue.venue_address} <br>
+      {$date_venue.venue_phone} <br>
+      {$date_venue.venue_link}<br>
+      </div>
   </div>
   
   <style>
@@ -103,6 +104,7 @@
     .date-venue {
       text-align: center;
       padding: 20px;
+      background-color: white;
     }
   
     .reception-end {
