@@ -114,11 +114,11 @@
       <input 
         type="checkbox" 
         name="kōen" 
-        value="広縁" 
+        value="披露宴" 
         style="accent-color: {textColor};"
         bind:checked={isReceptionParticipating}
       />
-      広縁
+      披露宴
     </label>
   </div>
 
@@ -146,7 +146,7 @@
     </button>
   </div>
 
-  <button type="submit" on:click|preventDefault={doPost} style="background-color: {textColor}; color: white;">Submit</button>
+  <button type="submit" on:click|preventDefault={doPost} style="background-color: {textColor}; color: white;">送信</button>
 </div>
 
 <style>

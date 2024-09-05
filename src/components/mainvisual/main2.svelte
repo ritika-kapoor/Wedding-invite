@@ -18,7 +18,7 @@
     <div class="visual-cta" style="background-image: url({bgImageUrl});">
       {#if $main_image.image}
         <!-- Main image -->
-        <img src={`https://www.wearelakers.net/${$main_image.image}`} alt="Bride and Groom" class="main-image" />
+        <img src={`https://www.wearelakers.net/${$main_image.image}?width=450`} alt="Bride and Groom" class="main-image" />
       {:else}
         <p>Image not available</p>
       {/if}
