@@ -41,7 +41,7 @@
       textColor = '#E3BE54'; // Gold color hex code
       break;
     default:
-      textColor = 'red';
+      textColor = 'black';
       break;
   }
 </script>
@@ -56,7 +56,7 @@
   <h1 class="heading" style="color: {textColor}; font-family: {fontFamilyPrimary}; font-size: {isNoto ? '40px' : '50px'}; font-weight: {isNoto ? '700' : '400'};">
     Our Story
   </h1>
-  <img src={$our_story.couple} alt="Couple" class="couple-image">
+  <!-- <img src={$our_story.couple} alt="Couple" class="couple-image"> -->
   <p class="description" style="color: {textColor}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '17px' : '16px'}; font-weight: {isNoto ? '400' : '400'};">
     {$our_story.story_description}
   </p>

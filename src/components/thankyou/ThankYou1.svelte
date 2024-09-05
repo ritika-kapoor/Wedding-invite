@@ -33,7 +33,7 @@
       textColor = '#E3BE54'; // Gold color hex code
       break;
     default:
-      textColor = 'red';
+      textColor = 'black';
       break;
   }
   </script>

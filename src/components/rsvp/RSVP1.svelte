@@ -1,24 +1,35 @@
 <script>
   import { date, sendInvitationId } from '../../store';
   import Time from 'svelte-time';
-  
+
   export let font;
   export let color;
 
   let selectedOption = '';
-
-  //function for guest entry form
-  let result = null
   let isWeddingParticipating = false;
   let isReceptionParticipating = false;
+  let error = '';
+  let isSubmitted = false;
 
-  async function doPost () {
+  async function doPost() {
+    if (!isWeddingParticipating && !isReceptionParticipating) {
+      error = 'Please select at least one option.';
+      return;
+    }
+
+    if (!selectedOption) {
+      error = 'Please select an RSVP option.';
+      return;
+    }
+
+    error = '';
 
     let formData = new FormData();
-    formData.append('invitation_id', $sendInvitationId,); 
-    formData.append('is_wedding_participating', isWeddingParticipating); 
+    formData.append('invitation_id', $sendInvitationId);
+    formData.append('is_wedding_participating', isWeddingParticipating);
     formData.append('is_reception_participating', isReceptionParticipating);
-      const res = await fetch('https://api.wearelakers.net/invitation/participating/update', {
+
+    const res = await fetch('https://api.wearelakers.net/invitation/participating/update', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -29,11 +40,14 @@
         invitation_id: $sendInvitationId,
         is_wedding_participating: isWeddingParticipating,
         is_reception_participating: isReceptionParticipating,
+        rsvp: selectedOption
       })
-    })
+    });
 
-    const json = await res.json()
-    result = JSON.stringify(json)
+    const json = await res.json();
+    console.log(json);
+
+    isSubmitted = true;
   }
 
   let fontLink1 = '';
@@ -72,7 +86,7 @@
       textColor = '#E3BE54'; // Gold color hex code
       break;
     default:
-      textColor = 'red';
+      textColor = 'black';
       break;
   }
 </script>
@@ -99,54 +113,61 @@
     ゲスト様入力項目<br>Guest Entry Form
   </p>
 
-  <div class="checkboxes">
-    <label style="font-size: {isNoto ? '17px' : '16px'}; font-weight: 400;">
-      <input 
-        type="checkbox" 
-        name="wedding" 
-        value="結婚式" 
-        style="accent-color: {textColor};"
-        bind:checked={isWeddingParticipating}
-      />
-      結婚式
-    </label>
-    <label style="font-size: {isNoto ? '17px' : '16px'}; font-weight: 400;">
-      <input 
-        type="checkbox" 
-        name="kōen" 
-        value="披露宴" 
-        style="accent-color: {textColor};"
-        bind:checked={isReceptionParticipating}
-      />
-      披露宴
-    </label>
-  </div>
+  {#if isSubmitted}
+    <p style="font-size: {isNoto ? '20px' : '20px'}; font-weight: 700;">送信済み</p>
+  {:else}
+    <!-- error handling -->
+    {#if error}
+      <p style="color: red;">{error}</p>
+    {/if}
 
-  <div class="button-group">
-    <button 
-      class:selected={selectedOption === 'attend'}
-      on:click={() => selectedOption = 'attend'}
-      style="border: 1px solid {textColor}; color: {selectedOption === 'attend' ? 'white' : textColor}; background-color: {selectedOption === 'attend' ? textColor : 'white'}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '12px' : '12px'}; font-weight: 700;"
-    >
-      ご出席<br>Attend
-    </button>
-    <button 
-      class:selected={selectedOption === 'hold'}
-      on:click={() => selectedOption = 'hold'}
-      style="border: 1px solid {textColor}; color: {selectedOption === 'hold' ? 'white' : textColor}; background-color: {selectedOption === 'hold' ? textColor : 'white'}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '12px' : '12px'}; font-weight: 700;"
-    >
-      保留<br>Hold
-    </button>
-    <button 
-      class:selected={selectedOption === 'decline'}
-      on:click={() => selectedOption = 'decline'}
-      style="border: 1px solid {textColor}; color: {selectedOption === 'decline' ? 'white' : textColor}; background-color: {selectedOption === 'decline' ? textColor : 'white'}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '12px' : '12px'}; font-weight: 700;"
-    >
-      ご欠席<br>Decline
-    </button>
-  </div>
+    <!-- Checkbox Options -->
+    <div class="checkboxes">
+      <label style="font-size: {isNoto ? '17px' : '16px'}; font-weight: 400;">
+        <input 
+          type="checkbox" 
+          name="wedding" 
+          value="結婚式" 
+          style="accent-color: {textColor};"
+          bind:checked={isWeddingParticipating}
+        />
+        結婚式
+      </label>
+      <label style="font-size: {isNoto ? '17px' : '16px'}; font-weight: 400;">
+        <input 
+          type="checkbox" 
+          name="kōen" 
+          value="披露宴" 
+          style="accent-color: {textColor};"
+          bind:checked={isReceptionParticipating}
+        />
+        披露宴
+      </label>
+    </div>
 
-  <button type="submit" on:click|preventDefault={doPost} style="background-color: {textColor}; color: white;">送信</button>
+    <!-- RSVP Selection -->
+    <div class="button-group">
+      <button 
+        class:selected={selectedOption === 'attend'}
+        on:click={() => selectedOption = 'attend'}
+        style="border: 1px solid {textColor}; color: {selectedOption === 'attend' ? 'white' : textColor}; background-color: {selectedOption === 'attend' ? textColor : 'white'}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '12px' : '12px'}; font-weight: 700;"
+      >
+        ご出席<br>Attend
+      </button>
+
+
+
+      <button 
+        class:selected={selectedOption === 'decline'}
+        on:click={() => selectedOption = 'decline'}
+        style="border: 1px solid {textColor}; color: {selectedOption === 'decline' ? 'white' : textColor}; background-color: {selectedOption === 'decline' ? textColor : 'white'}; font-family: {fontFamilySecondary}; font-size: {isNoto ? '12px' : '12px'}; font-weight: 700;"
+      >
+        ご欠席<br>Decline
+      </button>
+    </div>
+
+    <button type="submit" on:click|preventDefault={doPost} style="background-color: {textColor}; color: white;" disabled={!selectedOption || (!isWeddingParticipating && !isReceptionParticipating)}>送信</button>
+  {/if} <!-- this is closing the else -->
 </div>
 
 <style>
@@ -181,10 +202,6 @@
     cursor: pointer;
   }
 
-  /* .button-group button:hover {
-    background-color: #c9a34a;
-  } */
-
   button {
     padding: 10px 20px;
     border: none;
@@ -193,7 +210,8 @@
     margin: 10px;
   }
 
-  /* button:hover {
-    background-color: #c9a34a;
-  } */
+  button[disabled] {
+    background-color: grey;
+    cursor: not-allowed;
+  }
 </style>
