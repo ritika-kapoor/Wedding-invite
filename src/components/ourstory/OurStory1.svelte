@@ -4,6 +4,7 @@
 
   export let font;
   export let color;
+  export let backgroundColor;
 
   let fontLink1 = '';
   let fontLink2 = '';
@@ -11,6 +12,7 @@
   let fontFamilySecondary = '';
   let textColor = '';
   let isNoto = false;
+  let backColor = '';
 
   // Set the fonts based on the API value
   switch (font) {
@@ -30,6 +32,21 @@
   }
 
   // Set the text color based on the API value
+  switch (backgroundColor) {
+    case 'transparent':
+      backColor = 'transparent';
+      break;
+      case 'yellow':
+      backColor = '#FDF0C6';
+      break;
+      case 'pink':
+      backColor = '#fab5b7';
+      break;
+    default:
+      backColor = 'white';
+      break;
+  }
+
   switch (color) {
     case 'purple':
       textColor = 'purple';
@@ -52,7 +69,7 @@
   <link rel="stylesheet" href={fontLink2}>
 </svelte:head>
 
-<div class="our-story">
+<div class="our-story" style="background-color: {backColor};">
   <h1 class="heading" style="color: {textColor}; font-family: {fontFamilyPrimary}; font-size: {isNoto ? '40px' : '50px'}; font-weight: {isNoto ? '700' : '400'};">
     Our Story
   </h1>
@@ -87,7 +104,7 @@
   .our-story {
     text-align: center;
     padding: 15px;
-    background-color: white;
+    /* background-color: white; */
   }
 
   .couple-image {

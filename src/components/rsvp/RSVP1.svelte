@@ -4,12 +4,14 @@
 
   export let font;
   export let color;
+  export let backgroundColor;
 
   let selectedOption = '';
   let isWeddingParticipating = false;
   let isReceptionParticipating = false;
   let error = '';
   let isSubmitted = false;
+  let backColor = '';
 
   async function doPost() {
     if (!isWeddingParticipating && !isReceptionParticipating) {
@@ -89,6 +91,21 @@
       textColor = 'black';
       break;
   }
+  switch (backgroundColor) {
+    case 'transparent':
+      backColor = 'transparent';
+      break;
+      case 'yellow':
+      backColor = '#FDF0C6';
+      break;
+      case 'pink':
+      backColor = '#FFBABA';
+      break;
+    default:
+      backColor = 'white';
+      break;
+  }
+
 </script>
 
 <svelte:head>
@@ -96,7 +113,7 @@
   <link rel="stylesheet" href={fontLink2}>
 </svelte:head>
 
-<div class="rsvp" style="font-family: {fontFamilySecondary}; color: {textColor};">
+<div class="rsvp" style="font-family: {fontFamilySecondary}; color: {textColor}; background-color: {backColor};">
   <h1 class="heading" style="font-family: {fontFamilyPrimary}; font-size: {isNoto ? '40px' : '65px'}; font-weight: {isNoto ? '700' : '400'}; color: {textColor};">
     RSVP
   </h1>
@@ -175,6 +192,7 @@
     text-align: center;
     padding: 5px;
     background-color: white;
+    padding-bottom: 35px;
   }
 
   .checkboxes {

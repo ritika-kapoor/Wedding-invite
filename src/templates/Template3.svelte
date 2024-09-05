@@ -19,11 +19,11 @@
 
             <OurStory1 font="kaisei" color="black"/>
             
-            <DateVenue1 font="kaisei" color="black" />
+            <DateVenue1 font="kaisei" color="black" backgroundColor="pink" />
             
             <Gallery1 font="kaisei" color="black"/>
             
-            <Rsvp1 font="kaisei" color="black" />
+            <Rsvp1 font="kaisei" color="black" backgroundColor="pink" />
             
             <Thankyou1 font="kaisei" color="black"/>
             

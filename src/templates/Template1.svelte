@@ -19,15 +19,15 @@
             
             <HostInfo1/>
 
-            <OurStory1 font="noto" color="gold"/>
+            <OurStory1 font="noto" color="gold" backgroundColor="yellow"/>
             
             <DateVenue1 font="noto" color="gold" />
             
-            <Gallery1 font="noto" color="gold"/>
+            <Gallery1 font="noto" color="gold"  backgroundColor="yellow"/>
             
             <Rsvp1 font="noto" color="gold" />
             
-            <Thankyou1 font="noto" color="gold"/>
+            <Thankyou1 font="noto" color="gold" backgroundColor="yellow"/>
             
         </div>
 

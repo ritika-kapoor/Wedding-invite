@@ -20,15 +20,15 @@
 
             <HostInfo2/>
 
-            <OurStory1 font="kaisei" color="purple"/>
+            <OurStory1 font="kaisei" color="purple" backgroundColor="transparent"/>
             
             <DateVenue1 font="kaisei" color="purple" />
             
-            <Gallery1 font="kaisei" color="purple"/>
+            <Gallery1 font="kaisei" color="purple" backgroundColor="transparent"/>
             
             <Rsvp1 font="kaisei" color="purple" />
             
-            <Thankyou1 font="kaisei" color="purple"/>
+            <Thankyou1 font="kaisei" color="purple" backgroundColor="transparent"/>
             
         </div>
 

@@ -4,11 +4,13 @@
 
     export let font;
     export let color;
+    export let backgroundColor;
   
     let fontLink1 = '';
     let fontFamilyPrimary = '';
     let textColor = '';
     let isNoto = false;
+    let backColor = '';
   
     // Set the fonts and colors based on the API value
     switch (font) {
@@ -37,13 +39,28 @@
         textColor = 'black';
         break;
     }
+
+    switch (backgroundColor) {
+    case 'transparent':
+      backColor = 'transparent';
+      break;
+      case 'yellow':
+      backColor = '#FDF0C6';
+      break;
+      case 'pink':
+      backColor = '#FFBABA';
+      break;
+    default:
+      backColor = 'white';
+      break;
+  }
   </script>
   
   <svelte:head>
     <link rel="stylesheet" href={fontLink1}>
   </svelte:head>
   
-  <div class="gallery" style="color: {textColor};">
+  <div class="gallery" style="color: {textColor}; background-color: {backColor};">
     <h1 class="heading" style="font-family: {fontFamilyPrimary}; font-size: {isNoto ? '40px' : '65px'}; font-weight: {isNoto ? '700' : '400'};">Gallery</h1>
     <div class="image-grid">
 
@@ -64,7 +81,7 @@
     .heading{
       margin-top: 0px;
     }
-    
+
     .image-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);

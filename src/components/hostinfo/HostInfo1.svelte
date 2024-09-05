@@ -65,6 +65,7 @@
       position: relative;
       z-index: 3;
       margin-top: -40%;
+      padding-top: 40px;
     }
 
     .bride{

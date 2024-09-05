@@ -1,11 +1,13 @@
 <script>
     export let font;
     export let color;
+    export let backgroundColor;
   
     let fontLink1 = '';
     let fontFamilyPrimary = '';
     let fontSize = '';
     let textColor = '';
+    let backColor = '';
   
     // Set the fonts and styles based on the API value
     switch (font) {
@@ -35,6 +37,21 @@
     default:
       textColor = 'black';
       break;
+  }    
+  
+  switch (backgroundColor) {
+    case 'transparent':
+      backColor = 'transparent';
+      break;
+      case 'yellow':
+      backColor = '#FDF0C6';
+      break;
+      case 'pink':
+      backColor = '#FFBABA';
+      break;
+    default:
+      backColor = 'white';
+      break;
   }
   </script>
   
@@ -42,16 +59,17 @@
     <link rel="stylesheet" href={fontLink1}>
   </svelte:head>
   
-  <div class="thank-you" style="font-family: {fontFamilyPrimary}; font-size: {fontSize}; color: {textColor};">
+  <div class="thank-you" style="font-family: {fontFamilyPrimary}; font-size: {fontSize}; color: {textColor}; background-color: {backColor};">
     Thank <br> You
   </div>
   
   <style>
     .thank-you {
       text-align: center;
-      padding: 100px;
+      padding: 60px;
       color: #000; 
-      background-color: white;
+      /* background-color: white; */
+      padding-bottom: 20px;
     }
   </style>
   

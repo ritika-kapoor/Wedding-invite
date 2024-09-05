@@ -4,6 +4,7 @@
 
     export let font;
     export let color;
+    export let backgroundColor;
 
 
     let fontLink1 = '';
@@ -12,6 +13,7 @@
     let fontFamilySecondary = '';
     let textColor = '';
     let isNoto = false;
+    let backColor = '';
   
     // Set the fonts based on the API value
     switch (font) {
@@ -45,6 +47,20 @@
         textColor = 'black';
         break;
     }
+    switch (backgroundColor) {
+    case 'transparent':
+      backColor = 'transparent';
+      break;
+      case 'yellow':
+      backColor = '#FDF0C6';
+      break;
+      case 'pink':
+      backColor = '#FFBABA';
+      break;
+    default:
+      backColor = 'white';
+      break;
+  }
 
      // Helper function to validate the map URL
     function isValidMapUrl(url) {
@@ -64,7 +80,7 @@
     <link rel="stylesheet" href={fontLink2}>
   </svelte:head>
   
-  <div class="date-venue" style="color: {textColor};">
+  <div class="date-venue" style="color: {textColor}; background-color: {backColor};">
     {#if $date_venue.start_time}
       <div class="start" style="font-family: {fontFamilyPrimary}; font-size: {isNoto ? '20px' : '20px'}; font-weight: {isNoto ? '700' : '400'};">
           開始
