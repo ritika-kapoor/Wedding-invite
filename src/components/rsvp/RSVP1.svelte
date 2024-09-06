@@ -24,6 +24,11 @@
       return;
     }
 
+    if(selectedOption === 'decline') {
+      isWeddingParticipating = false;
+      isReceptionParticipating = false;
+    }
+
     error = '';
 
     let formData = new FormData();
