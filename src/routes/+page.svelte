@@ -13,6 +13,7 @@
     import Template2 from '../templates/Template2.svelte';
     import Template3 from '../templates/Template3.svelte';
     import Template4 from '../templates/Template4.svelte';
+    import Template5 from '../templates/Template5.svelte';
 
 
     onMount(async () => {
@@ -41,6 +42,10 @@
                 <Template3 />
             {:else if $template.number === 4}
                 <Template4 />
+            {:else if $template.number === 5}
+                <Template5 />
+            {:else }
+                <Template1 />
             {/if}
         {/if}
     </div>
